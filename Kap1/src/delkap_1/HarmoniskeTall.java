@@ -18,6 +18,8 @@ public class HarmoniskeTall {
         String utskrift = permutasjonSnitt();
         System.out.println(utskrift);
 
+        System.out.println(permutasjonSnittTeacherWay());
+
     }
 
     /*
@@ -62,6 +64,18 @@ public class HarmoniskeTall {
         for (double i = n; i <= n * 1000_000 ; i *= 10 ){
             gjennomsnitt = Math.log(i) - 0.423;
             ut += df.format(gjennomsnitt) + " " + " når n er " + i + "\n";
+        }
+        return ut;
+    }
+
+    public static String permutasjonSnittTeacherWay(){
+
+        String ut = "";
+        int n = 10;
+        for(int i = 0; i < 7; i++){
+            double x = Math.log(n) - 0.423;
+            System.out.printf("n = %-8d ln(n)-0.423 = %4.1f\n",n,x);  //--> search this
+            n *= 10;
         }
         return ut;
     }
