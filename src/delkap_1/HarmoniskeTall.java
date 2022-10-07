@@ -66,5 +66,3 @@ public class HarmoniskeTall {
         return ut;
     }
 }
-
-//sjekker commits
