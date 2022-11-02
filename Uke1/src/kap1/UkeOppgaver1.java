@@ -12,15 +12,24 @@ Hvis den største verdien forekommer flere ganger, vil maks-metoden returnere po
 Hva må endres for at den skal returnere posisjonen til den siste?
 
 Seksjon 1.1.3
-Oppgave 5 :
+Oppgave 4 :
 Lag en metode public static int[] minmaks(int[] a).
 Den skal ved hjelp av en int-tabell med lengde 2 returnere posisjonene til minste og største verdi i tabellen a.
 Hvis du har funnet at m1 er posisjonen til den minste og m2 til den største, kan du returnere tabellen b
 definert ved:   int[] b = {m1, m2}; Hvor mange sammenligninger bruker metoden din?
 
-Oppgave 6:
+Oppgave 5:
 Utrykket n! betyr n fakultet og er gitt ved n! = n · (n-1) ·  ·  · 2 · 1 . Lag en metode
-long fak(int n) som regner ut n! . Hvor mange multiplikasjoner utføres i metoden?
+long fak(int n) som regner ut n!. Hvor mange multiplikasjoner utføres i metoden?
+
+Seksjon 1.1.5
+Oppgave 6:
+Sjekk at Programkode 1.1.5 gir korrekte resultater. Hva skjer hvis a har lengde 1 og hva hvis a er tom (lengde 0).
+Se også Avsnitt 1.1.7.
+
+Oppgave 7:
+Gjør om Programkode 1.1.5 slik at posisjonen til den første av dem returneres hvis den største verdien
+ligger flere steder.
 */
 
 import java.util.Arrays;
@@ -52,11 +61,34 @@ public class UkeOppgaver1 {
         int n = 5;
         System.out.println(n + "! fakultet blir "+ fak(n));
 
-
-        //alternativet metodekalletfak1(a) og skriver ut
+        //alternativet metodekallet fak1(a) og skriver ut
         int n1 = 0;
         System.out.println(n1 + "! fakultet blir "+ fak1(n1));
 
+        //metodekallet maks2(int[] a) og skriver ut
+        System.out.println("Posisjonen til den største verdien er : " + maks2(a));
+
+        //deloppgave 6: Hva skjer hvis a har lengde 1
+        int[] a1 = {8};
+        System.out.println("Posisjonen til den største verdien er : " + maks2(a1));
+
+        //deloppgave 6: Hva skjer hvis a er tom (lengde 0)
+        int[] a2 = {};
+        //System.out.println("Posisjonen til den største verdien er : " + maks2(a2));
+
+        /*
+        Hvis det Programkode 1.1.5 brukes på en tabell a med ingen elementer (dvs. a.length lik 0),
+        finnes det ikke noe element med indeks lik 0. Dermed vil setningen int maksverdi = a[0] gi
+        en ArrayIndexOutOfBoundsException.
+
+        Hvis tabellen a har kun ett element, vil for-løkken gå én gang siden sist er 0.
+        Dermed returneres 0 som er posisjonen til den største.
+        Hvis det er kun ett element, er det også størst.
+        */
+
+        //metodekallet maks3(int[] a) og skriver ut
+        int[] a3 = {8,4,20,10,6,20,1,11,15,3,18,20,2,7,19};
+        System.out.println("Posisjonen til den største verdien er : " + maks3(a3));
 
     }
 
@@ -146,7 +178,7 @@ public class UkeOppgaver1 {
         return utskrift;
     }
 
-    //Oppgave 5:
+    //Oppgave 4:
     public static int[] minmaks(int[] a){
 
         //lager m1 og m2 som skal inneholde verdiene til den minste og den største
@@ -173,7 +205,7 @@ public class UkeOppgaver1 {
         return new int[]{m1, m2};
     }
 
-    //Oppgave 6:
+    //Oppgave 5:
     public static long fak(int n){
 
         if(n == 0){
@@ -188,12 +220,11 @@ public class UkeOppgaver1 {
         return fakultet;
     }
 
-    //Oppgave 6 alternative:
+    //Oppgave 5 alternative:
     public static long fak1(int n)
     {
         if (n < 0) {
             throw new IllegalArgumentException("n < 0");
-
         }
 
         long fak = 1;
@@ -202,5 +233,51 @@ public class UkeOppgaver1 {
 
         return fak;
     }
+
+    //Oppgave 6
+    public static int maks2(int[] a){  // versjon 3 av maks-metoden
+        int sist = a.length - 1;       // siste posisjon i tabellen
+        int m = 0;                     // indeks til største verdi
+        int maksverdi = a[0];          // største verdi
+        int temp = a[sist];            // tar vare på siste verdi
+        a[sist] = 0x7fffffff;          // legger tallet 2147483647 sist
+
+        for (int i = 0; ; i++) {        // i starter med 0
+            if (a[i] >= maksverdi) {       // denne blir sann til slutt
+                if (i == sist){             // sjekker om vi er ferdige
+                    a[sist] = temp;          // legger siste verdi tilbake
+                    return temp >= maksverdi ? sist : m;   // er siste størst?
+                } else {
+                    maksverdi = a[i];        // maksverdi oppdateres
+                    m = i;                   // m oppdateres
+                }
+            }
+        }
+    } // maks
+
+    //Oppgave 7
+    public static int maks3(int[] a)  // versjon 3 av maks-metoden
+    {
+        int sist = a.length - 1;       // siste posisjon i tabellen
+        int m = 0;                     // indeks til største verdi
+        int maksverdi = a[0];          // største verdi
+        int temp = a[sist];            // tar vare på siste verdi
+        a[sist] = 0x7fffffff;          // legger tallet 2147483647 sist
+
+        for (int i = 0; ; i++)         // i starter med 1
+            if (a[i] >= maksverdi)       // denne blir sann til slutt
+            {
+                if (i == sist)             // sjekker om vi er ferdige
+                {
+                    a[sist] = temp;          // legger siste verdi tilbake
+                    return temp > maksverdi ? sist : m;   // er siste størst?
+                }
+                else if (a[i] > maksverdi)   //endret her
+                {
+                    maksverdi = a[i];        // maksverdi oppdateres
+                    m = i;                   // m oppdateres
+                }
+            }
+    } // maks
 
 }
