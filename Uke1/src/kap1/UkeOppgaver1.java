@@ -10,7 +10,20 @@ Hva ville metodekallet min(a) returnere med hvis a er tabellen i Figur 1.1.2? La
 Oppgave 3 :
 Hvis den største verdien forekommer flere ganger, vil maks-metoden returnere posisjonen til den første av dem.
 Hva må endres for at den skal returnere posisjonen til den siste?
+
+Seksjon 1.1.3
+Oppgave 5 :
+Lag en metode public static int[] minmaks(int[] a).
+Den skal ved hjelp av en int-tabell med lengde 2 returnere posisjonene til minste og største verdi i tabellen a.
+Hvis du har funnet at m1 er posisjonen til den minste og m2 til den største, kan du returnere tabellen b
+definert ved:   int[] b = {m1, m2}; Hvor mange sammenligninger bruker metoden din?
+
+Oppgave 6:
+Utrykket n! betyr n fakultet og er gitt ved n! = n · (n-1) ·  ·  · 2 · 1 . Lag en metode
+long fak(int n) som regner ut n! . Hvor mange multiplikasjoner utføres i metoden?
 */
+
+import java.util.Arrays;
 
 public class UkeOppgaver1 {
 
@@ -27,9 +40,23 @@ public class UkeOppgaver1 {
         String maks = maks(a);
         System.out.println(maks);
 
-        //metodekallet maks(a) og skriver ut
+        //alternativet metodekallet maks1(a) og skriver ut
         String maks1 = maks1(a);
         System.out.println(maks1);
+
+        //metodekallet minmaks(a) og skriver ut
+        int[] minmaks = minmaks(a);
+        System.out.println(Arrays.toString(minmaks));
+
+        //metodekallet fak(int n) og skriver ut
+        int n = 5;
+        System.out.println(n + "! fakultet blir "+ fak(n));
+
+
+        //alternativet metodekalletfak1(a) og skriver ut
+        int n1 = 0;
+        System.out.println(n1 + "! fakultet blir "+ fak1(n1));
+
 
     }
 
@@ -117,6 +144,63 @@ public class UkeOppgaver1 {
 
         String utskrift = "Posisjonen til den siste største verdien " + posisjon + " og verdien er " + maks;
         return utskrift;
+    }
+
+    //Oppgave 5:
+    public static int[] minmaks(int[] a){
+
+        //lager m1 og m2 som skal inneholde verdiene til den minste og den største
+        int m1 = a[0];
+        int m2 = a[0];
+
+        // lager en variabel til for å telle opp sammenligninger
+        int antall = 0;
+
+        // lager for-løkke for å finne ut minste og største tallet
+        for(int i = 1 ; i < a.length; i++){
+
+            if(a[i] > m2){
+                m2 = a[i];
+                antall++;
+            }
+            else if (a[i] < m1){
+                m1 = a[i];
+                antall++;
+            }
+        }
+
+        System.out.println("Antall sammenligner blir " + antall + " og den minste og største verdiene er : ");
+        return new int[]{m1, m2};
+    }
+
+    //Oppgave 6:
+    public static long fak(int n){
+
+        if(n == 0){
+            return 1;
+        }
+
+        long fakultet = 1;
+
+        for (int i = n ; i >= 1 ; i--){
+            fakultet *= i;
+        }
+        return fakultet;
+    }
+
+    //Oppgave 6 alternative:
+    public static long fak1(int n)
+    {
+        if (n < 0) {
+            throw new IllegalArgumentException("n < 0");
+
+        }
+
+        long fak = 1;
+
+        for (int i = 2; i <= n; i++) fak *= i;
+
+        return fak;
     }
 
 }
