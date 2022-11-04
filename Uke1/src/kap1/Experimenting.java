@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 //Hvordan kan vi bruke algoritme finn maksimum til å sortere et array?
 //finner maksimum tall og deretter flytter plass
-//sortering er på ascending form: big to small
+//sortering er på descending form: big to small
 // took help from https://www.javatpoint.com/how-to-sort-an-array-in-java
 
 public class Experimenting {
