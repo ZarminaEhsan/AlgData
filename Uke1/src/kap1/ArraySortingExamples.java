@@ -7,7 +7,7 @@ public class ArraySortingExamples {
 
     public static void main(String[] args){
 
-        ///creating an instance of an array
+        ///creating an instance of an array or defining an array of integer type
         int[] liste = new int []{9,8,2,1,2,3,4,5};
 
         // ascending order: small to big
