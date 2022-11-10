@@ -111,6 +111,8 @@ public class ArraySortingExamples {
             }
             c[j] = a;
         }
+
+        System.out.println("From void method " + Arrays.toString(c));
     }
 
     public static int[] sort3(int[] d){
