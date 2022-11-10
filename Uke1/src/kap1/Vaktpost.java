@@ -32,6 +32,9 @@ public class Vaktpost {
 
             if(a[i] >= vaktpost){
                 a[i] = sisteElement;
+
+                // using break to stop code here since cannot use return as method type is void
+
                 break;
             }
             else if (a[i] > størsteverdi ){
