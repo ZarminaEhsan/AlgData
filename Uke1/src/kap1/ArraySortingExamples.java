@@ -82,7 +82,7 @@ public class ArraySortingExamples {
         return a;
     }
 
-    public static int[] sort1(int[] b){
+    public static int[] sort1(int []b){
 
         int temp;
 
@@ -98,7 +98,7 @@ public class ArraySortingExamples {
         return b;
     }
 
-    public static void sort2(int[] c, int lengde){
+    public static void sort2(int c[], int lengde){
 
         for(int i = 1; i < lengde; i++){
 
