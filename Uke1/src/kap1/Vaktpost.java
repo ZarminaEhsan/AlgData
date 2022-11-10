@@ -15,7 +15,7 @@ public class Vaktpost {
         int result = maks1(tabell);
         System.out.println("Indeksen med alternativ metode er " + result);
 
-        int[] tabell1 = {2,10,5,4};
+        int[] tabell1 = {2,10,5,4,4};
         maks2(tabell1);
     }
 
@@ -79,20 +79,27 @@ public class Vaktpost {
 
     static void maks2(int[] a){
 
-        int sistsIndeks = a.length - 1;
-        int sisteElement = a[sistsIndeks];
-        //int temp = sisteElement;
+        int sisteIndeks = a.length - 1;       // siste posisjon i tabellen
+        int sisteElement = a[sisteIndeks];    // tar vare på siste verdi
+
         int m = 0;
-        int maksverdi = a[m];
+        int maksverdi = a[0];
+
+        a[sisteIndeks] = maksverdi; // maksverdi legges sist istdenfor vaktpost
 
         for(int i = 1; ; i++){
-            if(a[i] > maksverdi){
-                maksverdi = a[i];
-                m = i;
-            }
-            else if(a[i] == sisteElement){
-             a[sistsIndeks] = sisteElement;
-             break;
+
+            if(a[i] >= maksverdi){
+
+                if(i == sisteIndeks){
+                    a[sisteIndeks] = sisteElement;
+                    break;
+                }
+                else if(a[i] > maksverdi){
+                    maksverdi = a[i];
+                    a[sisteIndeks] = maksverdi;
+                    m = i;
+                }
             }
         }
         System.out.println("Maksverdi blir " + maksverdi + " og indeksen er " + m);
