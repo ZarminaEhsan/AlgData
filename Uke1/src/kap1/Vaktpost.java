@@ -96,9 +96,9 @@ public class Vaktpost {
                     break;
                 }
                 else if(a[i] > maksverdi){
-                    maksverdi = a[i];
-                    a[sisteIndeks] = maksverdi;
-                    m = i;
+                    maksverdi = a[i];     // maksverdi oppdateres
+                    a[sisteIndeks] = maksverdi; // maksverdi legges sist igjen
+                    m = i;      // m oppdateres
                 }
             }
         }
