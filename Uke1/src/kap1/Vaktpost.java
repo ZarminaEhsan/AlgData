@@ -9,7 +9,7 @@ package kap1;
 public class Vaktpost {
     public static void main(String[] args){
 
-        int[] tabell = {8,4,17,10,6,20,1,11,15,3,18,9,2,7,19};
+        int[] tabell = {8,4,17,10,6,20,1,11,115,3,18,9,2,7,19};
         maks(tabell);
     }
 
@@ -21,7 +21,7 @@ public class Vaktpost {
         int sisteIndeks = a.length - 1;
         int sisteElement = a[sisteIndeks];
         a[sisteIndeks] = 0x7fffffff;
-        int maksverdi = a[sisteIndeks];
+        int vaktpost = a[sisteIndeks];
 
         // indeks til foreløpig største verdi (m for maks)
 
@@ -30,7 +30,7 @@ public class Vaktpost {
 
         for(int i = 0; ; i++){
 
-            if(a[i] >= maksverdi){
+            if(a[i] >= vaktpost){
                 a[i] = sisteElement;
                 break;
             }
