@@ -9,8 +9,14 @@ package kap1;
 public class Vaktpost {
     public static void main(String[] args){
 
-        int[] tabell = {8,4,17,10,6,20,1,11,115,3,18,9,2,7,19};
+        int[] tabell = {8,4,17,10,6,20,1,115,115,3,18,9,2,7,19};
         maks(tabell);
+
+        int result = maks1(tabell);
+        System.out.println("Indeksen med alternativ metode er " + result);
+
+        int[] tabell1 = {2,10,5,4};
+        maks2(tabell1);
     }
 
     static void maks(int[] a){
@@ -26,7 +32,7 @@ public class Vaktpost {
         // indeks til foreløpig største verdi (m for maks)
 
         int m = 0;
-        int størsteverdi = a[m];
+        int storsteverdi = a[m];
 
         for(int i = 0; ; i++){
 
@@ -37,8 +43,8 @@ public class Vaktpost {
 
                 break;
             }
-            else if (a[i] > størsteverdi ){
-                størsteverdi = a[i];
+            else if (a[i] > storsteverdi ){
+                storsteverdi = a[i];
                 m = i;
             }
         }
@@ -47,7 +53,48 @@ public class Vaktpost {
             System.out.print(liste + " ");
         }
         System.out.println();
-        System.out.println("Maks verdi blir " + størsteverdi);
+        System.out.println("Maksverdi blir " + storsteverdi + " og indeksen er " + m);
+    }
 
+    static int maks1(int[] a) {
+        int m = a.length - 1;          // indeks til største verdi
+        int maksverdi = a[m];          // største verdi
+        int temp = a[0];               // tar vare på første verdi
+        a[0] = 0x7fffffff;             // legger tallet 2147483647 først
+
+        for (int i = m; ; i--) {       // i starter bakerst
+            if (a[i] >= maksverdi)       // denne blir sann for i = 0
+            {
+                if (i == 0)                // sjekker om vi er ferdige
+                {
+                    a[0] = temp;             // legger siste verdi tilbake
+                    return temp >= maksverdi ? 0 : m; // er første størst?
+                } else {
+                    maksverdi = a[i];        // maksverdi oppdateres
+                    m = i;                   // m oppdateres
+                }
+            }
+        }
+    }
+
+    static void maks2(int[] a){
+
+        int sistsIndeks = a.length - 1;
+        int sisteElement = a[sistsIndeks];
+        //int temp = sisteElement;
+        int m = 0;
+        int maksverdi = a[m];
+
+        for(int i = 1; ; i++){
+            if(a[i] > maksverdi){
+                maksverdi = a[i];
+                m = i;
+            }
+            else if(a[i] == sisteElement){
+             a[sistsIndeks] = sisteElement;
+             break;
+            }
+        }
+        System.out.println("Maksverdi blir " + maksverdi + " og indeksen er " + m);
     }
 }
