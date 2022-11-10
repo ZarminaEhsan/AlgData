@@ -2,17 +2,28 @@ package kap1;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ArraySortingExamples {
 
     public static void main(String[] args){
 
-        ///creating an instance of an array or defining an array of integer type
+        //creating an instance of an array or defining an array of integer type
         int[] liste = new int []{9,8,2,1,2,3,4,5};
         int[] liste1 = new int []{9,8,2,1,2,3,4,5};
         int[] liste2 = new int []{9,8,2,1,2,3,4,5};
 
-        // ascending order: small to big
+
+        //creating Integer array
+        Integer [] array = {23, -9, 78, 102, 4, 0, -1, 11, 6, 110, 205};
+
+        //creating String array
+        String [] strarray = {"Mango", "Apple", "Grapes", "Papaya", "Pineapple", "Banana", "Orange"};
+
+        // ascending order: small to big : example 1 to 3
+        // descending order: big to small : example 4 & 5
+
+
         // example 1: with sort method
         int[] result = sort(liste);
 
@@ -34,15 +45,32 @@ public class ArraySortingExamples {
         System.out.println("Sorted array using loop " + Arrays.toString(result));
 
 
-        // example3: using while-loop and void method
+        // example3: using while-loop inside for-loop and void method
         sort2(liste2, liste2.length);
 
         //accessing elements of the sorted array and printing out
-        System.out.print("Using while-loop inside loop to sort array ");
+        System.out.print("Using while-loop inside for-loop to sort array ");
         int i;
         for(i = 0; i <liste2.length; i++) {
             System.out.print(liste2[i] + " ");
         }
+
+        System.out.println();
+
+        // example 4: with reverseOrder() method
+        Arrays.sort(array, Collections.reverseOrder());
+        System.out.println("Array elements in descending order: " + Arrays.toString(array));
+
+        Arrays.sort(strarray, Collections.reverseOrder());
+        System.out.println("Array elements in descending order: " + Arrays.toString(strarray));
+
+
+        // example 5: using for loop
+        result = sort3(liste1);
+
+        //print out using toString
+        System.out.println("Sorted array using loop " + Arrays.toString(result));
+
     }
 
     public static int[] sort(int[] a){
@@ -83,5 +111,20 @@ public class ArraySortingExamples {
             }
             c[j] = a;
         }
+    }
+
+    public static int[] sort3(int[] d){
+
+        int temp;
+        for(int i = 0; i < d.length; i++){
+            for(int j = i + 1; j < d.length; j++){
+                if(d[i] < d[j]){
+                    temp = d[i];
+                    d[i] = d[j];
+                    d[j] = temp;
+                }
+            }
+        }
+        return d;
     }
 }
