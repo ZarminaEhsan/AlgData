@@ -36,8 +36,8 @@ public class Testing {
         return m;  // returnerer indeksen/posisjonen til største verdi
     }
 
+    // versjon 2 av maks-metoden:
     /*
-    versjon 2 av maks-metoden:
     I setningen int maksverdi = a[0]; vil det under kjøring av programmet bli sjekket om a er null eller ikke.
     Hvis a er null blir det kastet en NullPointerException, og det er slik det skal være.
     Hvis a er tom (a.length = 0), vil a[0] gi en ArrayIndexOutOfBoundsException.
@@ -63,8 +63,8 @@ public class Testing {
 
     }
 
+    // versjon 3 av maks-metoden:
     /*
-    versjon 3 av maks-metoden:
     Setningen int sist = a.length - 1; vil gi en NullPointerException hvis a er null.
     Setningen int maksverdi = a[0]; vil gi en en ArrayIndexOutOfBoundsException hvis a er tom.
     Hvis det skal kastes en NoSuchElementException for en tom tabell,
@@ -72,7 +72,6 @@ public class Testing {
     I flg. versjon av Programkode 1.1.5 er dette gjort og det er også lagt inn kode som gjør at
     hvis den største verdien forekommer flere steder, er det posisjonen til den første av dem som returneres.
     */
-
     public static int maks(int[] a) {
 
         // unntak for tom tabell
