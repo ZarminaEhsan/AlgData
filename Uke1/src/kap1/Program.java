@@ -8,9 +8,7 @@ import java.util.Random;
 public class Program {
     public static void main(String[] args){
 
-        int n = 100_000;  // tabellstørrelse
-
-    /*
+        /*
         int sum = 0;
         int antall = 10;
 
@@ -32,9 +30,11 @@ public class Program {
         System.out.println("\nGjennomsnitt = " + gjsnitt);
         */
 
+        int n = 10_000;  // tabellstørrelse
         int antall = 2_000;     // antall gjentagelser
         long tid = 0;           // for tidsmåling
         int[] a = new int[n];
+        Arrays.sort(a);
         randPerm(a);  // en permutasjon av 1, . .  n
 
         tid = System.currentTimeMillis();  // leser av klokken
