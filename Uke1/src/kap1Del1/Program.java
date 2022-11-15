@@ -79,5 +79,10 @@ public class Program {
         System.out.print("Maksverdi(" + a[m] + ") har posisjon " + m);
         System.out.println(", nest maksverdi(" + a[nm] + ") har posisjon " + nm);
 
+        Tabell.sortering(a);
+
+        a = Tabell.randPerm(5);
+        Tabell.sortering1(a);
+
     }
 }

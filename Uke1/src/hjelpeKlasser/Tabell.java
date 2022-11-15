@@ -328,9 +328,8 @@ public class Tabell {
         int m = maks(a);  // m er posisjonen til tabellens største verdi
         int nm;           // nm skal inneholde posisjonen til nest største verdi
 
-        bytt(a,a.length-1, m); // bytter om slik at den største kommer forrest
-
-        nm = maks(a,0,a.length-1);
+        bytt(a,a.length-1, m); // bytter om slik at den største kommer bakerst
+        nm = maks(a,0,a.length-1); // finner den nest største i ny intervallet
 
         if (nm == m){   // den nest største lå opprinnelig bakerst
             nm = a.length - 1;
@@ -341,5 +340,34 @@ public class Tabell {
         return new int[]{m, nm};      // m i posisjon 0 , nm i posisjon 1
     }
 
+    //sorteringsalgoritme : Finn først den største og bytt om slik at den kommer bakerst, osv: stigende rekkefølge
+    public static void sortering(int[] a){
+
+        System.out.println("Opprinnelige tabell A: " + Arrays.toString(a));
+
+        int m;  // m er posisjonen til tabellens største verdi
+
+        for (int i = a.length; i > 1; i--) {
+            m = Tabell.maks(a,0,i);
+            Tabell.bytt(a,i-1,m);
+        }
+
+        System.out.println("Etter stigende sortering" + Arrays.toString(a));
+    }
+
+    //sorteringsalgoritme : Finn først den minste og bytt om slik at den kommer forrest, osv: descending order
+    public static void sortering1(int[] a){
+
+        System.out.println("Opprinnelige tabell A: " + Arrays.toString(a));
+
+        int m;  // m er posisjonen til tabellens minste verdi
+
+        for (int i = 0; i < a.length - 1; i++) {
+            m = Tabell.min(a,i,a.length);
+            Tabell.bytt(a,i,m);
+        }
+
+        System.out.println("Etter mynkede sortering" + Arrays.toString(a));
+    }
 }
 
