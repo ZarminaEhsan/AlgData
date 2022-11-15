@@ -54,8 +54,24 @@ public class Program {
         Tabell.snu(a,2,8);
         Tabell.snuHeltabell(a);
 
-
         Tabell.snuChar(c,0,9);
+
+        a = Tabell.randPerm(10); // tilfeldig permutasjon av 1 . . 10
+        System.out.print("Den nest maksverdi versjon 1: ");
+        int[] b = Tabell.nestMaks(a);  // metoden returnerer en tabell
+        int m = b[0], nm = b[1];       // m for maks, nm for nestmaks
+        Tabell.skrivln(a);        // se Oppgave 5 i Avsnitt 1.2.2
+        System.out.print("Maksverdi(" + a[m] + ") har posisjon " + m);
+        System.out.println(", nest maksverdi(" + a[nm] + ") har posisjon " + nm);
+
+
+        System.out.print("Den nest maksverdi versjon 2: ");
+        b = Tabell.nestMaks2(a);  // metoden returnerer en tabell
+        m = b[0];  // m for maks
+        nm = b[1];  // nm for nestmaks
+        Tabell.skrivln(a);        // se Oppgave 5 i Avsnitt 1.2.2
+        System.out.print("Maksverdi(" + a[m] + ") har posisjon " + m);
+        System.out.println(", nest maksverdi(" + a[nm] + ") har posisjon " + nm);
 
     }
 }

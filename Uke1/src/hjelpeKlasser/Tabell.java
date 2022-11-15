@@ -256,5 +256,65 @@ public class Tabell {
         System.out.println(Arrays.toString(a));
     }
 
+    // metode for den nest største verdien
+    public static int[] nestMaks(int[] a){
+
+        int n = a.length;
+
+        if (n < 2) {          // må ha minst to verdier!
+            throw new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+
+        /*
+        To spesialtilfeller:
+        hvis m = 0, dvs. den største verdien ligger lengst til venstre i tabellen a,
+        så er intervallet til venstre for m tomt.
+        Da søker vi videre kun på høyre side av m. Hvis m = a.length – 1, dvs. den største verdien ligger
+        lengst til høyre, så er intervallet til høyre for m tomt. Da søker vi videre kun til venstre for m.
+        */
+
+        if (m == 0){    // den største ligger først
+            nm = maks(a, 1, n);  // leter i a[1:n>
+        }
+        else if (m == n - 1) { // den største ligger bakerst
+            nm = maks(a, 0, n - 1);    // leter i a[0:n-1>
+        }
+        else {
+            int mv = maks(a, 0, m);              // leter i a[0:m>
+            int mh = maks(a, m + 1, n);          // leter i a[m+1:n>
+            nm = a[mh] > a[mv] ? mh : mv;        // hvem er størst?
+        }
+
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+    }
+
+    // nest maksverdi versjon 2
+    public static int[] nestMaks2(int[] a) {
+
+        int n = a.length;
+
+        if (n < 2) {          // må ha minst to verdier!
+            throw new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+
+        bytt(a,0, m); // bytter om slik at den største kommer forrest
+
+        nm = maks(a,1,a.length);
+
+        if (nm == m){   // den nest største lå opprinnelig forrest
+            nm = 0;
+        }
+
+        bytt(a,0,m); // bytter tilbake
+
+        return new int[]{m, nm};      // m i posisjon 0 , nm i posisjon 1
+    }
+
 }
 
