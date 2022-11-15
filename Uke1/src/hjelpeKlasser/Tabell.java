@@ -316,5 +316,30 @@ public class Tabell {
         return new int[]{m, nm};      // m i posisjon 0 , nm i posisjon 1
     }
 
+    // nest maksverdi versjon 2
+    public static int[] nestMaks3(int[] a) {
+
+        int n = a.length;
+
+        if (n < 2) {          // må ha minst to verdier!
+            throw new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+
+        bytt(a,a.length-1, m); // bytter om slik at den største kommer forrest
+
+        nm = maks(a,0,a.length-1);
+
+        if (nm == m){   // den nest største lå opprinnelig bakerst
+            nm = a.length - 1;
+        }
+
+        bytt(a,a.length-1,m); // bytter tilbake
+
+        return new int[]{m, nm};      // m i posisjon 0 , nm i posisjon 1
+    }
+
 }
 
