@@ -40,9 +40,29 @@ public class Tabell {
 
      // Metoden maks(int[] a, int fra, int til)   Programkode 1.2.1 b)
      public static int maks(int[] a, int fra, int til) {
+
+         /*
+         denne if testen kan erstattes med kall på metode  fratilKontroll(a.length,fra,til);
+         og en ny if test som er for tom tabell
+
          if (fra < 0 || til > a.length || fra >= til)
          {
              throw new IllegalArgumentException("Illegalt intervall!");
+         }
+
+          */
+
+         //iss test ny top per ana hai else vanlig NullPointerException error ae ga
+         if (a == null) {
+             throw new NullPointerException
+                     ("parametertabellen a er null!");
+         }
+
+         fratilKontroll(a.length,fra,til);
+
+         if (fra == til) {
+             throw new NoSuchElementException
+                     ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
          }
 
          int m = fra;              // indeks til største verdi i a[fra:til>
@@ -161,6 +181,33 @@ public class Tabell {
 
         //returnere en heltallstabell som inneholder tallene fra og med fra og til
         return a;
+    }
+
+    public static void fratilKontroll(int tablengde, int fra, int til) {
+        if (fra < 0)                                  // fra er negativ
+            throw new ArrayIndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > tablengde)                          // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + tablengde + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
+    public static void vhKontroll(int tablengde, int v, int h) {
+        if (v < 0)
+            throw new ArrayIndexOutOfBoundsException("v(" + v + ") < 0");
+
+        if (h >= tablengde)
+            throw new ArrayIndexOutOfBoundsException
+                    ("h(" + h + ") >= tablengde(" + tablengde + ")");
+
+        if (v > h + 1)
+            throw new IllegalArgumentException
+                    ("v = " + v + ", h = " + h);
     }
 
 
