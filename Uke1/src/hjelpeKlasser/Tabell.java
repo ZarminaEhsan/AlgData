@@ -117,6 +117,9 @@ public class Tabell {
     // oppgave 4 : alle på én linje og et mellomrom mellom hvert tall.
     // Ikke mellomrom og ikke linjeskift etter siste verdi.
     public static void skriv(int[] a, int fra, int til){
+
+        fratilKontroll(a.length,fra,til);
+
         for(int i = fra; i < til; i++){
             System.out.print(" " + a[i]);
         }
@@ -128,6 +131,7 @@ public class Tabell {
 
     // oppgave 5 : utskriften skal avsluttes med et linjeskift resten er samme som oppgave 4
     public static void skrivln(int[] a, int fra, int til) {
+
         skriv(a,fra,til);
         System.out.println();
     }
@@ -137,9 +141,12 @@ public class Tabell {
     }
 
     //oppgave 6 : samme som oppgave 4 men med cha[]
-    public static void skrivChar(char[] a, int fra, int til){
+    public static void skrivChar(char[] c, int fra, int til){
+
+        fratilKontroll(c.length,fra,til);
+
         for(int i = fra; i < til; i++){
-            System.out.print(" " + a[i]);
+            System.out.print(" " + c[i]);
         }
     }
 
@@ -210,7 +217,44 @@ public class Tabell {
                     ("v = " + v + ", h = " + h);
     }
 
+    // oppgave : 6 sekjon 1.2.3
+    public static void snu(int[] a, int v, int h){
 
+        vhKontroll(a.length,v,h);
+        System.out.println(Arrays.toString(a));
+
+        while(v < h){
+            bytt(a,v++,h--);
+        }
+
+        System.out.println(Arrays.toString(a));
+    }
+
+    public static void snuHeltabell(int[] a){
+
+        vhKontroll(a.length,0,a.length-1);
+        System.out.println(Arrays.toString(a));
+
+        int v = 0, h = a.length-1;
+        while (v < h) {
+            bytt(a,v++,h--);
+        }
+
+        System.out.println(Arrays.toString(a));
+    }
+
+    // oppgave 7
+    public static void snuChar(char[] a, int v, int h){
+
+        vhKontroll(a.length,v,h);
+        System.out.println(Arrays.toString(a));
+
+        while(v < h){
+            byttChar(a,v++,h--);
+        }
+
+        System.out.println(Arrays.toString(a));
+    }
 
 }
 

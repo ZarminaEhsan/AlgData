@@ -44,11 +44,18 @@ public class Program {
         System.out.println(Arrays.toString(Tabell.heleTall(1,6)));
 
         a = Tabell.randPerm(10);
-        //Tabell.maks(a,-1,10);
-        //Tabell.maks(a,0,11);
-        //Tabell.maks(a,10,0);
-        //Tabell.maks(a,0,0);
-        //a = null;
-        //Tabell.maks(a,0,0);
+        // Tabell.maks(a,-1,10);
+        // Tabell.maks(a,0,11);
+        // Tabell.maks(a,10,0);
+        // Tabell.maks(a,0,0);
+        // a = null;
+        // Tabell.maks(a,0,0);
+
+        Tabell.snu(a,2,8);
+        Tabell.snuHeltabell(a);
+
+
+        Tabell.snuChar(c,0,9);
+
     }
 }
