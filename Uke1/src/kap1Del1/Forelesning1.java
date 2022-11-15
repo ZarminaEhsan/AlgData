@@ -1,4 +1,4 @@
-package kap1;
+package kap1Del1;
 
 /*
 Til slutt i videoen så går vi såvidt igjennom hvordan vi kan bruke find_max(int[] a) til å sortere,

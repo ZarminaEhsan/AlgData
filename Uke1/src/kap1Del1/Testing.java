@@ -1,4 +1,4 @@
-package kap1;
+package kap1Del1;
 
     /*
     Note! An empty array is an array of length zero; it has no elements int[] emptyArray = new int[0] or

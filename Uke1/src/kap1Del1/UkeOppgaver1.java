@@ -1,4 +1,4 @@
-package kap1;
+package kap1Del1;
 
 /*
 Seksjon 1.1.2

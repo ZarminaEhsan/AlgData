@@ -1,4 +1,4 @@
-package kap1;
+package kap1Del1;
 
 /*
 
@@ -15,7 +15,6 @@ If fromIndex is greater than toIndex. It throws IllegalArgumentException.
 If fromIndex < 0 or toIndex > a.length. It throws ArrayIndexOutOfBoundsException.
  */
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class SortSubArray {
